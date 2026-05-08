@@ -1,0 +1,65 @@
+[OCRService] Google Document AI Client initialized.
+================================================
+🚀 Petty Cash Server (Modular) is running!
+🔗 Local: http://localhost:3000
+📡 Network: Accessible via your local IP
+📅 Started at: 2026/5/8 上午10:58:11
+================================================
+Connected to SQLite database
+[0mGET /api/expenses?is_archived=false [32m200[0m 123.257 ms - 10868[0m
+[0mGET /api/categories [32m200[0m 8.550 ms - 3246[0m
+[0mGET /api/suppliers [32m200[0m 6.184 ms - 2482[0m
+[0mGET /api/config [36m304[0m 0.626 ms - -[0m
+[0mGET /api/personnel [32m200[0m 9.006 ms - 594[0m
+[0mGET /api/permissions [32m200[0m 1.342 ms - 865[0m
+[0mGET /api/config [36m304[0m 0.364 ms - -[0m
+[0mGET /api/expenses?is_archived=false [36m304[0m 1.819 ms - -[0m
+[0mGET /api/categories [36m304[0m 1.552 ms - -[0m
+[0mGET /api/suppliers [36m304[0m 1.761 ms - -[0m
+[0mGET /api/personnel [36m304[0m 1.085 ms - -[0m
+[0mGET /api/permissions [36m304[0m 1.775 ms - -[0m
+[0mGET /api/personnel [36m304[0m 0.923 ms - -[0m
+[0mGET /api/permissions [36m304[0m 0.834 ms - -[0m
+[0mGET /api/personnel [36m304[0m 0.789 ms - -[0m
+[0mGET /api/permissions [36m304[0m 1.459 ms - -[0m
+[0mGET /api/categories [36m304[0m 1.689 ms - -[0m
+[0mGET /api/expenses?is_archived=false [36m304[0m 4.245 ms - -[0m
+[0mGET /api/suppliers [36m304[0m 1.619 ms - -[0m
+[0mGET /api/personnel [36m304[0m 1.846 ms - -[0m
+[0mGET /api/config [36m304[0m 0.177 ms - -[0m
+[0mGET /api/permissions [36m304[0m 1.068 ms - -[0m
+[0mGET /api/expenses?is_archived=true [32m200[0m 2.981 ms - 13779[0m
+[0mGET /api/categories [36m304[0m 2.923 ms - -[0m
+[0mGET /api/expenses?is_archived=false [36m304[0m 3.853 ms - -[0m
+[0mGET /api/suppliers [36m304[0m 4.508 ms - -[0m
+[0mGET /api/config [36m304[0m 0.174 ms - -[0m
+[0mGET /api/personnel [36m304[0m 3.199 ms - -[0m
+[0mGET /api/permissions [36m304[0m 1.953 ms - -[0m
+[0mGET /api/categories [36m304[0m 2.153 ms - -[0m
+[0mGET /api/config [36m304[0m 0.322 ms - -[0m
+[0mGET /api/suppliers [36m304[0m 3.055 ms - -[0m
+[0mGET /api/personnel [36m304[0m 1.022 ms - -[0m
+[0mGET /api/permissions [36m304[0m 0.879 ms - -[0m
+[0mGET /api/expenses?is_archived=false [36m304[0m 4.783 ms - -[0m
+[0mGET /api/categories [36m304[0m 3.552 ms - -[0m
+[0mGET /api/suppliers [36m304[0m 2.446 ms - -[0m
+[0mGET /api/config [36m304[0m 0.286 ms - -[0m
+[0mGET /api/personnel [36m304[0m 3.554 ms - -[0m
+[0mGET /api/permissions [36m304[0m 2.266 ms - -[0m
+[0mPOST /api/ocr [32m200[0m 7048.169 ms - 1253[0m
+[TranslateService] Translating [Processed via Document AI] to [zh-TW]...
+[0mPOST /api/translate [32m200[0m 209.092 ms - 36[0m
+[TranslateService] Translating [洋蔥] to [en]...
+[0mPOST /api/translate [32m200[0m 191.542 ms - 16[0m
+[0mGET /api/personnel [36m304[0m 3.031 ms - -[0m
+[0mGET /api/permissions [36m304[0m 0.875 ms - -[0m
+[0mGET /api/permissions [36m304[0m 1.378 ms - -[0m
+[0mGET /api/personnel [36m304[0m 1.039 ms - -[0m
+[0mPOST /api/ocr [32m200[0m 7130.216 ms - 859[0m
+[TranslateService] Translating [Processed via Document AI] to [zh-TW]...
+[0mPOST /api/translate [32m200[0m 314.908 ms - 36[0m
+[TranslateService] Translating [洋蔥] to [en]...
+[0mPOST /api/translate [32m200[0m 167.358 ms - 16[0m
+[TranslateService] Translating [onion] to [zh-TW]...
+[0mPOST /api/translate [32m200[0m 153.942 ms - 17[0m
+[0mGET /api/export_v2 [32m200[0m 321.433 ms - -[0m

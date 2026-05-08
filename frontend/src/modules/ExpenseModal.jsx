@@ -53,7 +53,7 @@ export function ExpenseModal({
         initial={{ opacity: 0, scale: 0.98, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.98, y: 10 }}
-        className="bg-white w-full max-w-6xl h-[90vh] rounded-[40px] shadow-2xl overflow-hidden flex flex-col relative"
+        className="bg-white w-full max-w-7xl h-[1500px] max-h-[98vh] rounded-[40px] shadow-2xl overflow-hidden flex flex-col relative"
       >
         {/* Header */}
         <div className="px-8 py-6 bg-white border-b border-slate-100 flex items-center justify-between">
@@ -68,16 +68,53 @@ export function ExpenseModal({
 
         <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col lg:flex-row">
           {/* Left: Receipt Preview */}
-          <div className="w-full lg:w-1/2 p-10 bg-slate-50 border-r border-slate-100 relative">
-            <div className="relative h-full bg-white rounded-[32px] overflow-hidden shadow-inner flex flex-col items-center justify-center group">
+          <div className="w-full lg:w-1/2 p-8 bg-slate-50 border-r border-slate-100 flex flex-col gap-6">
+            {/* Receipt Actions Toolbar */}
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-3">
+                {previewUrl && !isOcrLoading && (
+                  <button 
+                    type="button"
+                    onClick={() => runOCR(selectedFile)}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-brand-600 text-white rounded-xl font-black shadow-lg shadow-brand-600/20 hover:bg-brand-500 hover:scale-[1.02] transition-all active:scale-95 text-xs"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    🤖 AI 智能辨識 (START OCR)
+                  </button>
+                )}
+              </div>
+              
+              <div className="flex items-center gap-2">
+                {previewUrl && (
+                  <>
+                    <button 
+                      type="button" 
+                      onClick={() => window.open(previewUrl, '_blank')} 
+                      className="p-2.5 bg-white border border-slate-200 text-slate-600 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2 font-bold text-[10px]"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5" /> OPEN
+                    </button>
+                    <button 
+                      type="button" 
+                      onClick={() => { setPreviewUrl(null); setSelectedFile(null); setFormData(prev => ({ ...prev, image_path: null })); }} 
+                      className="p-2.5 bg-rose-50 text-rose-500 border border-rose-100 rounded-xl shadow-sm hover:bg-rose-100 transition-all"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Receipt Preview Card */}
+            <div className="flex-1 relative bg-white rounded-[40px] overflow-hidden shadow-sm border border-slate-200/60 flex flex-col items-center justify-center group">
               {previewUrl ? (
                 <div
-                  className="relative w-full h-full cursor-zoom-in overflow-hidden"
-                  onMouseEnter={() => setIsZoomed(true)}
-                  onMouseLeave={() => setIsZoomed(false)}
+                  className={`relative w-full h-full cursor-zoom-in overflow-hidden ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
+                  onClick={() => setIsZoomed(!isZoomed)}
                   onMouseMove={handleMouseMove}
                 >
-                  <img src={previewUrl} alt="Receipt" className="w-full h-full object-contain" />
+                  <img src={previewUrl} alt="Receipt" className={`w-full h-full object-contain transition-transform duration-300 ${isZoomed ? 'scale-150' : 'scale-100'}`} />
                   {isZoomed && (
                     <div
                       className="absolute inset-0 z-10 pointer-events-none"
@@ -89,14 +126,6 @@ export function ExpenseModal({
                       }}
                     />
                   )}
-                  <div className="absolute top-6 right-6 flex gap-3 z-30">
-                    <button type="button" onClick={() => window.open(previewUrl, '_blank')} className="p-4 bg-white/90 backdrop-blur-md text-slate-900 rounded-2xl shadow-xl hover:bg-white transition-all flex items-center gap-2 font-bold text-xs">
-                      <ArrowUpRight className="w-4 h-4" /> OPEN
-                    </button>
-                    <button type="button" onClick={() => { setPreviewUrl(null); setSelectedFile(null); setFormData(prev => ({ ...prev, image_path: null })); }} className="p-4 bg-rose-500 text-white rounded-2xl shadow-xl hover:bg-rose-600 transition-all">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
                 </div>
               ) : (
                 <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 transition-all p-12 text-center group">
@@ -107,19 +136,6 @@ export function ExpenseModal({
                   <p className="text-slate-400 text-xs font-bold leading-relaxed max-w-[240px]">點擊上傳憑證照片，上傳後可手動執行 AI 辨識。</p>
                   <input type="file" className="hidden" accept="image/*" onChange={onFileChange} />
                 </label>
-              )}
-
-              {previewUrl && !isOcrLoading && (
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
-                  <button 
-                    type="button"
-                    onClick={() => runOCR(selectedFile)}
-                    className="flex items-center gap-3 px-8 py-4 bg-brand-600 text-white rounded-2xl font-black shadow-2xl shadow-brand-600/40 hover:bg-brand-500 hover:scale-105 transition-all active:scale-95"
-                  >
-                    <Sparkles className="w-5 h-5 animate-pulse" />
-                    🤖 AI 智能辨識 (START OCR)
-                  </button>
-                </div>
               )}
 
               {/* Overlays */}

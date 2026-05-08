@@ -29,7 +29,7 @@ function AppContent() {
     user, handleLogin, handleLogout, stats, fetchData, 
     allConfigs, searchTerm, setSearchTerm, 
     setFormData, runOCR, formData, editingId,
-    isAdding, setIsAdding, previewUrl, setPreviewUrl, loading, initialFormData
+    isAdding, setIsAdding, previewUrl, setPreviewUrl, loading, initialFormData, resetForm
   } = useExpenseContext();
 
   const [activeTab, setActiveTab] = useState('ledger');
@@ -145,6 +145,7 @@ function AppContent() {
              <div className="flex gap-2">
                <button 
                  onClick={() => {
+                   resetForm();
                    setFormData({ ...initialFormData, category_id: '5', has_bill: false, incoming: '' });
                    setIsAdding(true);
                  }} 
@@ -155,6 +156,7 @@ function AppContent() {
                
                <button 
                  onClick={() => {
+                   resetForm();
                    setFormData({ ...initialFormData, category_id: '6', has_bill: false, incoming: '' });
                    setIsAdding(true);
                  }} 
@@ -163,7 +165,13 @@ function AppContent() {
                  <PlusCircle className="w-4 h-4" /> 個人代墊 ADVANCE
                </button>
 
-               <button onClick={() => { setFormData(initialFormData); setIsAdding(true); }} className="flex items-center gap-3 px-8 py-3 bg-brand-600 text-white rounded-xl font-black hover:bg-brand-500 transition-all shadow-xl shadow-brand-600/20 active:scale-95">
+               <button 
+                 onClick={() => { 
+                   resetForm(); 
+                   setIsAdding(true); 
+                 }} 
+                 className="flex items-center gap-3 px-8 py-3 bg-brand-600 text-white rounded-xl font-black hover:bg-brand-500 transition-all shadow-xl shadow-brand-600/20 active:scale-95"
+               >
                   <PlusCircle className="w-5 h-5" /> 新增紀錄 NEW ENTRY
                </button>
              </div>

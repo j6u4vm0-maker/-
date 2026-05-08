@@ -8,3 +8,9 @@ backend/uploads/
 dist/
 build/
 *.log
+*.txt
+scratch/
+PIc/
+backend/petty_cash.db-journal
+backend/petty_cash.db-shm
+backend/petty_cash.db-wal

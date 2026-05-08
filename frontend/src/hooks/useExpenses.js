@@ -93,6 +93,7 @@ export const useExpenses = (API_BASE) => {
     setEditingId(null);
     setSearchTerm('');
     setFilters({ category: 'all', personnel: 'all', status: 'all', startDate: '', endDate: '' });
+    setPreviewUrl(null);
   };
 
   const handleEditRecord = (exp) => {
